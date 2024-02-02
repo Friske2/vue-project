@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div>Navbar
-      <router-link to="/home">home</router-link>
-      <router-link to="/about">about</router-link>
-      <button @click="handleLogout">logout</button>
+  <div class="container">
+    <div>
+      <layout-navbar @logout="handleLogout" />
     </div>
     <div>
       <router-view />
@@ -11,10 +9,14 @@
   </div>
 </template>
 <script lang="ts">
+import LayoutNavbar from './Navbar.vue'
 import { defineComponent } from 'vue';
 import useAuth from '../hooks/useAuth'
 import { useRouter } from 'vue-router'
 export default defineComponent({
+  components: {
+    LayoutNavbar
+  },
   setup() {
     const { logout } = useAuth()
     const router = useRouter()
