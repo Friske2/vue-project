@@ -1,17 +1,19 @@
 <template>
   <div>
     Home
+    <el-button @click="clickme">clickme</el-button>
     <svg-icon height="200px" name="vue"></svg-icon>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
-import SvgIcon from '../components/svgIcon.vue'
-export default defineComponent({
-  name: 'Home',
-  components: {
-    SvgIcon
-  }
-})
+<script lang="ts" setup>
+import useMessage from '../hooks/useMessage'
+import SvgIcon from '../components/SvgIcon.vue'
+const { messageConfirm } = useMessage()
+const clickme = () => {
+  messageConfirm('clickme success')
+  .then(()=> {
+    console.log('clickme success')
+  })
+}
 
 </script>
